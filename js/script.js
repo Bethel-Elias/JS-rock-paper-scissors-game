@@ -60,17 +60,24 @@ function getPlayerInput(roundNumber) {
 
 function parsePlayerSelection(input) {
   if (input === null) {
-    return { status: "cancel" };
+    return { status: "cancel"};
   }
 
   const selection = normalizeSelection(input);
+
+  if (selection === "") {
+    return {
+      status: "empty",
+      message: "You entered nothing. Please type rock, paper, or scissors.",
+    };
+  }
 
   if (!selection) {
     return { status: "invalid", message: "Invalid input! Round repeated." };
   }
 
   if (isQuitCommand(selection)) {
-    return { status: "quit" };
+    return { status: "quit", message: "Game ended by user." };
   }
 
   if (!isValidChoice(selection)) {
