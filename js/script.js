@@ -36,18 +36,44 @@ function game() {
   let playerScore = 0;
   let computerScore = 0;
 
-   console.log("Welcome to Rock Paper Scissors Game!");
+  alert(
+    "Rock Paper Scissors\n\n" +
+      "How to play:\n" +
+      "- Enter rock, paper, or scissors when prompted.\n" +
+      "- Enter quit or click Cancel to leave the game.\n" +
+      "- The game counts 5 valid rounds.\n" +
+      "- Invalid input repeats the round.\n\n" +
+      "How to see results:\n" +
+      "- Open the browser console.\n" +
+      "- Windows/Linux: F12 or Ctrl+Shift+I\n" +
+      "- Mac: Cmd+Option+I\n" +
+      "- Click the Console tab to watch the score and round results."
+  );
+
+  console.log("Welcome to Rock Paper Scissors Game!");
 
   for (let i = 1; i <= 5; i++) {
-    let playerSelection = prompt(`Round ${i}: Enter rock, paper, or scissors`);
+    let playerSelection = prompt(
+      `Round ${i}: Enter rock, paper, or scissors.\nType quit or click Cancel to exit.`
+    );
+
+    if (playerSelection === null) {
+      console.log("Game canceled by user.");
+      return;
+    }
+
+    playerSelection = playerSelection.trim().toLowerCase();
+
+    if (playerSelection === "quit") {
+      console.log("Game ended by user.");
+      return;
+    }
 
     if (!playerSelection) {
       console.log("Invalid input! Round repeated.");
       i--;
       continue;
     }
-
-    playerSelection = playerSelection.trim().toLowerCase();
 
     if (
       playerSelection !== "rock" &&
