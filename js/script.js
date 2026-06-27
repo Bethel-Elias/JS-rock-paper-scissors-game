@@ -13,7 +13,7 @@ function playRound(playerSelection, computerSelection) {
   playerSelection = playerSelection.toLowerCase();
 
   if (playerSelection === computerSelection) {
-    return "tie";
+    return `It's a tie! Both chose ${playerSelection}`;
   }
 
   if (
@@ -21,10 +21,10 @@ function playRound(playerSelection, computerSelection) {
     (playerSelection === "paper" && computerSelection === "rock") ||
     (playerSelection === "scissors" && computerSelection === "paper")
   ) {
-    return "win";
+    return `You Win! ${playerSelection} beats ${computerSelection}`;
   }
 
-  return "lose";
+  return `You Lose! ${computerSelection} beats ${playerSelection}`;
 }
 // const playerSelection = "rock";
 // const computerSelection = computerPlay();
@@ -47,7 +47,7 @@ function game() {
       continue;
     }
 
-    playerSelection = playerSelection.toLowerCase();
+    playerSelection = playerSelection.trim().toLowerCase();
 
     if (
       playerSelection !== "rock" &&
@@ -64,15 +64,12 @@ function game() {
     const result = playRound(playerSelection, computerSelection);
 
     console.log(`You: ${playerSelection} | Computer: ${computerSelection}`);
+    console.log(result);
 
-    if (result === "win") {
+    if (result.startsWith("You Win!")) {
       playerScore++;
-      console.log("You win this round!");
-    } else if (result === "lose") {
+    } else if (result.startsWith("You Lose!")) {
       computerScore++;
-      console.log("Computer wins this round!");
-    } else {
-      console.log("It's a tie!");
     }
 
     console.log(`Score => Player: ${playerScore}, Computer: ${computerScore}`);
