@@ -1,13 +1,9 @@
-// computerPlay function that randomly returns rock, paper, or scissors
 
 function computerPlay() {
   const choices = ["rock", "paper", "scissors"];
   const randomIndex = Math.floor(Math.random() * choices.length);
   return choices[randomIndex];
 }
-// console.log(computerPlay());
-
-// playRound function that takes playerSelection and computerSelection as parameters and returns the result of the round
 
 function playRound(playerSelection, computerSelection) {
   playerSelection = playerSelection.toLowerCase();
@@ -26,11 +22,6 @@ function playRound(playerSelection, computerSelection) {
 
   return `You Lose! ${computerSelection} beats ${playerSelection}`;
 }
-// const playerSelection = "rock";
-// const computerSelection = computerPlay();
-// console.log(playRound(playerSelection, computerSelection));
-
-// game function that plays 5 rounds of rock-paper-scissors and keeps track of the score
 
 function game() {
   let playerScore = 0;
